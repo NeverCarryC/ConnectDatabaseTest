@@ -1,0 +1,32 @@
+CREATE DATABASE almacen;
+
+USE almacen;
+
+CREATE TABLE productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255),
+    descripcion TEXT,
+    cantidad INT,
+    precio DECIMAL(10, 2)
+);
+
+CREATE TABLE empleados (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255),
+    apellidos VARCHAR(255),
+    correo VARCHAR(255)
+);
+
+CREATE TABLE pedidos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_producto INT,
+    descripcion TEXT,
+    precio_total DECIMAL(10, 2),
+    FOREIGN KEY (id_producto) REFERENCES productos(id)
+);
+
+CREATE TABLE productos_fav (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_producto INT,
+    FOREIGN KEY (id_producto) REFERENCES productos(id)
+);
